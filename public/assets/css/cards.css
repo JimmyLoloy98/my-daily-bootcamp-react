@@ -1,0 +1,137 @@
+.public {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 22px;
+  max-width: 622px;
+  margin-top: 28px;
+}
+.pop-container{
+  display: flex;
+  position: absolute;
+  right: 0;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-end;
+  margin-right: 18px;
+  gap: 4px;
+}
+.public-button {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 3px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  width: 24px;
+  height: 24px;
+}
+.public-button:hover{
+  background: #F0F7FF;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.public-button img {
+  width: 18px;
+}
+.public-button img:hover {
+  cursor: pointer;
+  filter: opacity(9) drop-shadow(0 0 0 #1877F2);
+}
+.POP{
+  background: white;
+  border-radius: 8px;
+  width: 120px;
+  height: 32px;
+  padding: 4px;
+  align-items: center;
+  display: none;
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.08), 2px 2px 8px rgba(0, 0, 0, 0.08);
+}
+.popUp{
+  margin: 2px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px;
+  gap: 10px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: none;
+  width: 115px;
+  height: 28px;
+}
+.popUp:hover{
+  cursor: pointer;
+  background: #F0F7FF;
+  border-radius: 8px;
+}
+.popUp img{
+  border: 1.33333px solid #203758;
+  color: #203758;
+  border: none;
+}
+.popUp p{
+  color: #203758;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+}
+.public-date {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.date-conte {
+  display: flex;
+  gap: 5px;
+}
+.link-public {
+  text-decoration: none;
+}
+.date-img {
+  border-radius: 50px;
+  border: 2px solid white;
+  box-shadow: -2px 1px 5px -1px rgba(192, 192, 192, 1);
+  width: 50px;
+  height: 50px;
+  left: 391px;
+  top: 181px;
+}
+.date-text {
+  padding: 4px;
+}
+.date-text h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #203758;
+}
+.date-text p {
+  margin: 0;
+  font-size: 11px;
+  color: #788292;
+  padding-top: 4px;
+}
+.text {
+  padding-right: 15px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  color: #203758;
+}
+.images {
+  display: flex;
+  gap: 12px;
+}
+.sub-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

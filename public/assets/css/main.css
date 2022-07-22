@@ -1,0 +1,59 @@
+@import url("./profile-card.css");
+@import url("./cards.css");
+@import url("./team.css");
+@import url("./followme.css");
+@import url("./footer.css");
+@import url("./notice-sections.css");
+@import url("./header.css");
+@import url("./styles-new-learning.css");
+@import url("./input-file.css");
+@import url("./thumbnails.css");
+@import url("./stories.css");
+@import url("./main-scroll.css");
+@import url("./modaldelete.css");
+@import url("./reset.css");
+
+
+/* CSS del Layout principal */
+.main {
+  max-width: 1317px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main>div {
+  border-radius: 4px;
+}
+
+.sidebar-right {
+  max-width: 363px;
+}
+
+.sidebar-left {
+  max-width: 274px;
+  position: -webkit-sticky;
+  position: sticky;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 90px;
+}
+
+.sidebar-left,
+.sidebar-right {
+  position: -webkit-sticky;
+  position: sticky;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 90px;
+}
+
+.daily-content {
+  max-width: 622px;
+  margin-left: 29px;
+  margin-right: 29px;
+  margin-bottom: 2em;
+}
