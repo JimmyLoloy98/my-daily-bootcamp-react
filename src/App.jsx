@@ -9,6 +9,7 @@ import ProfileCard from "./components/ProfileCard";
 import Team from "./components/Teams";
 import FollowUp from "./components/FollowUp";
 import NewPost from "./components/NewPost";
+import Post from "./components/Post";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 
         <DailyContent>
           <NewPost />
+          <Post />
         </DailyContent>
 
         <SidebarRigth>
