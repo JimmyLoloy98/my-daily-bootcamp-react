@@ -1,3 +1,10 @@
+import comp_profile1 from "../assets/img/companies/profile-1.jpg";
+import comp_profile2 from "../assets/img/companies/profile-2.jpg";
+import comp_profile3 from "../assets/img/companies/profile-3.jpg";
+import comp_profile4 from "../assets/img/companies/profile-4.jpg";
+import comp_profile5 from "../assets/img/companies/profile-5.jpg";
+import comp_profile6 from "../assets/img/companies/profile-6.jpg";
+
 export default function Ads() {
   return (
     <div className="notice-section">
@@ -15,21 +22,9 @@ export default function Ads() {
         </article>
         <footer className="notice-footer">
           <div className="notice-avatars">
-            <img
-              className="avatar avatar1"
-              src="../assets/img/companies/profile-1.jpg"
-              alt="photo 1"
-            />
-            <img
-              className="avatar avatar2"
-              src="../assets/img/companies/profile-2.jpg"
-              alt="photo 2"
-            />
-            <img
-              className="avatar avatar3"
-              src="../assets/img/companies/profile-3.jpg"
-              alt="photo 3"
-            />
+            <img className="avatar avatar1" src={comp_profile1} alt="photo 1" />
+            <img className="avatar avatar2" src={comp_profile2} alt="photo 2" />
+            <img className="avatar avatar3" src={comp_profile3} alt="photo 3" />
           </div>
           <span className="participants-text">12 participants</span>
         </footer>
@@ -44,21 +39,9 @@ export default function Ads() {
         </article>
         <footer className="notice-footer">
           <div className="notice-avatars">
-            <img
-              className="avatar avatar1"
-              src="../assets/img/companies/profile-4.jpg"
-              alt="photo 1"
-            />
-            <img
-              className="avatar avatar2"
-              src="../assets/img/companies/profile-5.jpg"
-              alt="photo 2"
-            />
-            <img
-              className="avatar avatar3"
-              src="../assets/img/companies/profile-6.jpg"
-              alt="photo 3"
-            />
+            <img className="avatar avatar1" src={comp_profile4} alt="photo 1" />
+            <img className="avatar avatar2" src={comp_profile5} alt="photo 2" />
+            <img className="avatar avatar3" src={comp_profile6} alt="photo 3" />
           </div>
           <span className="participants-text">18 participants</span>
         </footer>
