@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Storie from "./components/Storie";
+import Ads from "./components/Ads";
 import Main from "./components/Main";
 import SidebarLeft from "./components/SidebarLeft";
 import DailyContent from "./components/DailyContent";
@@ -20,6 +21,7 @@ function App() {
 
         <SidebarRigth>
           <Storie />
+          <Ads />
         </SidebarRigth>
       </Main>
     </>
