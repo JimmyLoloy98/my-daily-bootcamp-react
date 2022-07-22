@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import SidebarLeft from "./components/SidebarLeft";
 import DailyContent from "./components/DailyContent";
 import SidebarRigth from "./components/SidebarRigth";
+import ProfileCard from "./components/ProfileCard";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <Navbar />
 
       <Main>
-        <SidebarLeft></SidebarLeft>
+        <SidebarLeft>
+          <ProfileCard></ProfileCard>
+        </SidebarLeft>
 
         <DailyContent></DailyContent>
 
