@@ -4,46 +4,46 @@ import check from "../assets/img/icons/twitter-check.svg";
 
 export default function FollowUp() {
   return (
-    <div class="Follow-P">
+    <div className="Follow-P">
       <h3>Who to Follow</h3>
-      <div class="follow">
-        <div class="follow-date">
-          <div class="info">
+      <div className="follow">
+        <div className="follow-date">
+          <div className="info">
             <a
-              class="link-follow"
+              className="link-follow"
               href="https://twitter.com/condef5"
               target="_blank"
             >
               <img
                 src={inst_condef5}
                 alt="foto de perfil de un usuario"
-                class="instructor-profile"
+                className="instructor-profile"
               />
               <p>@condef5</p>
               <img src={check} alt="check" />
             </a>
           </div>
-          <button class="follow-1">
+          <button className="follow-1">
             <b>Follow</b>
           </button>
         </div>
-        <div class="follow-date">
-          <div class="info">
+        <div className="follow-date">
+          <div className="info">
             <a
-              class="link-follow"
+              className="link-follow"
               href="https://twitter.com/yummta?lang=es"
               target="_blank"
             >
               <img
                 src={inst_yummta}
                 alt="Paul Portillo"
-                class="instructor-profile"
+                className="instructor-profile"
               />
               <p>@yummta</p>
               <img src={check} alt="check" />
             </a>
           </div>
-          <button class="follow-1">
+          <button className="follow-1">
             <b>Follow</b>
           </button>
         </div>
