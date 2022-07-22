@@ -1,5 +1,5 @@
-const DailyContent = () => {
-  return <div className="daily-content">dayli content</div>;
+const DailyContent = ({ children }) => {
+  return <div className="daily-content">{children}</div>;
 };
 
 export default DailyContent;
