@@ -1,3 +1,4 @@
+@import url("./reset.css");
 @import url("./profile-card.css");
 @import url("./cards.css");
 @import url("./team.css");
@@ -11,7 +12,6 @@
 @import url("./stories.css");
 @import url("./main-scroll.css");
 @import url("./modaldelete.css");
-@import url("./reset.css");
 
 
 /* CSS del Layout principal */
