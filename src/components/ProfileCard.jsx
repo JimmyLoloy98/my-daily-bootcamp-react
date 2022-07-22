@@ -1,4 +1,4 @@
-import me from "../../public/assets/img/me.jpg";
+import me from "../assets/img/me.jpg";
 
 const ProfileCard = () => {
   return (

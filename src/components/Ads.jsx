@@ -17,17 +17,17 @@ export default function Ads() {
           <div className="notice-avatars">
             <img
               className="avatar avatar1"
-              src="../../public/assets/img/companies/profile-1.jpg"
+              src="../assets/img/companies/profile-1.jpg"
               alt="photo 1"
             />
             <img
               className="avatar avatar2"
-              src="../../public/assets/img/companies/profile-2.jpg"
+              src="../assets/img/companies/profile-2.jpg"
               alt="photo 2"
             />
             <img
               className="avatar avatar3"
-              src="../../public/assets/img/companies/profile-3.jpg"
+              src="../assets/img/companies/profile-3.jpg"
               alt="photo 3"
             />
           </div>
@@ -46,17 +46,17 @@ export default function Ads() {
           <div className="notice-avatars">
             <img
               className="avatar avatar1"
-              src="../../public/assets/img/companies/profile-4.jpg"
+              src="../assets/img/companies/profile-4.jpg"
               alt="photo 1"
             />
             <img
               className="avatar avatar2"
-              src="../../public/assets/img/companies/profile-5.jpg"
+              src="../assets/img/companies/profile-5.jpg"
               alt="photo 2"
             />
             <img
               className="avatar avatar3"
-              src="../../public/assets/img/companies/profile-6.jpg"
+              src="../assets/img/companies/profile-6.jpg"
               alt="photo 3"
             />
           </div>

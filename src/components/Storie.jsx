@@ -8,7 +8,7 @@ export default function Storie() {
             <div className="img-storie1 img-storie">
               <img
                 className="profile-photo"
-                src="../../public/assets/img/stories/profile 1.jpg"
+                src="../assets/img/stories/profile 1.jpg"
                 alt="foto de perfil de un usuario"
               />
               <h3 className="profile-name">Kierra Gentry</h3>
@@ -21,7 +21,7 @@ export default function Storie() {
             <div className="img-storie2 img-storie">
               <img
                 className="profile-photo"
-                src="../../public/assets/img/stories/profile 2.jpg"
+                src="../assets/img/stories/profile 2.jpg"
                 alt="foto de perfil de un usuario"
               />
               <h3 className="profile-name">Bradyn Krammer</h3>
@@ -34,7 +34,7 @@ export default function Storie() {
             <div className="img-storie3 img-storie">
               <img
                 className="profile-photo"
-                src="../../public/assets/img/stories/profile 3.jpg"
+                src="../assets/img/stories/profile 3.jpg"
                 alt="foto de perfil de un usuario"
               />
               <h3 className="profile-name">Pierre Cox</h3>

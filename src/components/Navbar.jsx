@@ -20,7 +20,7 @@ export default function Navbar() {
           <a className="logo-link" href="/index.html">
             <img
               className="logo-img"
-              src="./public/assets/img/logo.svg"
+              src="../assets/img/logo.svg"
               alt="bootcamp logo"
             />
             <h2 className="logo-text">My Daily Bootcamp</h2>
