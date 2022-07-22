@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap");
-
 .learning-input {
   pointer-events: none;
   height: 55px;
@@ -107,6 +105,8 @@
   background-color: white;
   padding: 32px;
 	border-radius: 8px;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
 	height: fit-content;
 	width: 500px;
 }
@@ -128,6 +128,8 @@
 .modal_window textarea{
   box-sizing: border-box;
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   border: 1.5px solid #F1F2F6;
   border-radius: 8px;
