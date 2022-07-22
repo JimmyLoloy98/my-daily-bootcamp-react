@@ -7,6 +7,7 @@ import DailyContent from "./components/DailyContent";
 import SidebarRigth from "./components/SidebarRigth";
 import ProfileCard from "./components/ProfileCard";
 import Team from "./components/Teams";
+import FollowUp from "./components/FollowUp";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <SidebarRigth>
           <Storie />
           <Ads />
+          <FollowUp />
         </SidebarRigth>
       </Main>
     </>
