@@ -16,6 +16,7 @@
 
 /* CSS del Layout principal */
 .main {
+  margin-bottom: 60px;
   max-width: 1317px;
   margin-left: auto;
   margin-right: auto;
