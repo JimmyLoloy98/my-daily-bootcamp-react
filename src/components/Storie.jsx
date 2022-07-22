@@ -1,3 +1,7 @@
+import profile1 from "../assets/img/stories/profile-1.jpg";
+import profile2 from "../assets/img/stories/profile-2.jpg";
+import profile3 from "../assets/img/stories/profile-3.jpg";
+
 export default function Storie() {
   return (
     <div className="stories">
@@ -8,7 +12,7 @@ export default function Storie() {
             <div className="img-storie1 img-storie">
               <img
                 className="profile-photo"
-                src="../assets/img/stories/profile 1.jpg"
+                src={profile1}
                 alt="foto de perfil de un usuario"
               />
               <h3 className="profile-name">Kierra Gentry</h3>
@@ -21,7 +25,7 @@ export default function Storie() {
             <div className="img-storie2 img-storie">
               <img
                 className="profile-photo"
-                src="../assets/img/stories/profile 2.jpg"
+                src={profile2}
                 alt="foto de perfil de un usuario"
               />
               <h3 className="profile-name">Bradyn Krammer</h3>
@@ -34,7 +38,7 @@ export default function Storie() {
             <div className="img-storie3 img-storie">
               <img
                 className="profile-photo"
-                src="../assets/img/stories/profile 3.jpg"
+                src={profile3}
                 alt="foto de perfil de un usuario"
               />
               <h3 className="profile-name">Pierre Cox</h3>
