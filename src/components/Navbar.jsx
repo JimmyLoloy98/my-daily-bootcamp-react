@@ -1,3 +1,5 @@
+import logo from "../assets/img/logo.svg";
+
 export default function Navbar() {
   return (
     <div className="header-wrapper">
@@ -18,11 +20,7 @@ export default function Navbar() {
         </nav>
         <div className="header-logo">
           <a className="logo-link" href="/index.html">
-            <img
-              className="logo-img"
-              src="../assets/img/logo.svg"
-              alt="bootcamp logo"
-            />
+            <img className="logo-img" src={logo} alt="bootcamp logo" />
             <h2 className="logo-text">My Daily Bootcamp</h2>
           </a>
         </div>
