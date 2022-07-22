@@ -8,6 +8,7 @@ import SidebarRigth from "./components/SidebarRigth";
 import ProfileCard from "./components/ProfileCard";
 import Team from "./components/Teams";
 import FollowUp from "./components/FollowUp";
+import NewPost from "./components/NewPost";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Team></Team>
         </SidebarLeft>
 
-        <DailyContent></DailyContent>
+        <DailyContent>
+          <NewPost />
+        </DailyContent>
 
         <SidebarRigth>
           <Storie />
