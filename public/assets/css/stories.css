@@ -73,15 +73,18 @@
 }
 
 .img-storie1 {
-  background-image: url("../assets/stories/bg-1.jpg");
+  background-image: url("../img/stories/bg-1.jpg");
+    background-repeat: no-repeat;
 }
 
 .img-storie2 {
-  background-image: url("../assets/stories/bg-2.jpg");
+  background-image: url("../img/stories/bg-2.jpg");
+    background-repeat: no-repeat;
 }
 
 .img-storie3 {
-  background-image: url("../assets/stories/bg-3.jpg");
+  background-image: url("../img/stories/bg-3.jpg");
+    background-repeat: no-repeat;
 }
 
 .profile-photo {
