@@ -12,7 +12,7 @@
   justify-items: center;
   display: flex;
   flex-direction: column;
-  row-gap: 2px;
+  row-gap: 1.5px;
   width: 274px;
   height: 242px;
 }
