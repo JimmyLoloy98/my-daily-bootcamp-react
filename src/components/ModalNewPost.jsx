@@ -3,7 +3,8 @@ import DataContext from "../context/context";
 
 export default function ModalNewPost({ open, setOpen }) {
   let dataContext = useContext(DataContext);
-  console.log(dataContext);
+  const [thumbailImages, setThumbailImages] = useState([]);
+
   return (
     <div
       id="modal_new_post"
@@ -42,7 +43,14 @@ export default function ModalNewPost({ open, setOpen }) {
                     type="file"
                     id="file-image"
                     multiple
-                    
+                    onChange={(e) => {
+                      let arrayFiles = Array.from(e.target.files);
+
+                      let arrayFilesUrl = arrayFiles.map((file) => {
+                        return URL.createObjectURL(file);
+                      });
+                      setThumbailImages([...arrayFilesUrl]);
+                    }}
                   />
                   <label htmlFor="file-image">
                     <svg
@@ -92,8 +100,16 @@ export default function ModalNewPost({ open, setOpen }) {
             </div>
           </div>
           <div className="container-thumbnails container-images">
-            <img src="../assets/img/instructors/condef5.jpeg" alt="" />
-            <button className="delete-button">Delete</button>
+            {/*<img src="../assets/img/instructors/condef5.jpeg" alt="" />*/}
+            {/*<button className="delete-button">Delete</button>*/}
+            {thumbailImages.map((timg) => {
+              return (
+                <div className="image-cell container-img">
+                  <img src={timg} alt="" />
+                  <button className="delete-button">Delete</button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

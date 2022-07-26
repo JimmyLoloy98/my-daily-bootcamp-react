@@ -13,7 +13,7 @@ import { useContext } from "react";
 
 export default function Post() {
   let dataContext = useContext(DataContext);
-  
+
   return (
     <>
       {dataContext.posts.map((post, index) => {
