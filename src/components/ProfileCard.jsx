@@ -1,23 +1,27 @@
 import me from "../assets/img/me.jpg";
+import { useContext } from "react";
+import DataContext from "../context/context";
 
 const ProfileCard = () => {
+  const dataContext = useContext(DataContext);
+
   return (
     <div className="Profile-card">
-      <img src={me} alt="Perfil del usuario" />
-      <h3>Paul Portillo</h3>
-      <span>Software Enginner</span>
-      <div className="buttom">
+      <img src={dataContext.user.profile_url} alt="Perfil del usuario" />
+      <h3>{dataContext.user.full_name}</h3>
+      <span>{dataContext.user.title}</span>
+      <div className="buttons-link">
         <a
-          href="https://twitter.com/yummta?lang=es"
+          href={dataContext.user.twitter_url}
           target="_blank"
-          className="profile-c"
+          className="profile-link"
         >
-          <b>@yummta</b>
+          <b>Twitter</b>
         </a>
         <a
-          href="https://www.linkedin.com/jobs/?originalSubdomain=pe"
+          href={dataContext.user.linkedin_url}
           target="_blank"
-          className="profile-c"
+          className="profile-link"
         >
           <b>LinkedIn</b>
         </a>
