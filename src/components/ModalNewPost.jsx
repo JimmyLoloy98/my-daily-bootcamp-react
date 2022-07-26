@@ -1,4 +1,9 @@
+import { useContext, useState } from "react";
+import DataContext from "../context/context";
+
 export default function ModalNewPost({ open, setOpen }) {
+  let dataContext = useContext(DataContext);
+  console.log(dataContext);
   return (
     <div
       id="modal_new_post"
@@ -15,7 +20,7 @@ export default function ModalNewPost({ open, setOpen }) {
             >
               &times;
             </a>
-            <h3>What did you learn today Paul?</h3>
+            <h3>{`What did you learn today ${dataContext.user.full_name}?`}</h3>
             <textarea
               name="post-area"
               id="post-area"
@@ -37,6 +42,7 @@ export default function ModalNewPost({ open, setOpen }) {
                     type="file"
                     id="file-image"
                     multiple
+                    
                   />
                   <label htmlFor="file-image">
                     <svg

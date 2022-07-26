@@ -13,7 +13,6 @@ import { useContext } from "react";
 
 export default function Post() {
   let dataContext = useContext(DataContext);
-  console.log("aqui el data context en post", dataContext);
   return (
     <>
       {dataContext.posts.map((post, index) => {
