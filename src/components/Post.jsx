@@ -1,12 +1,6 @@
 import dots_icon from "../assets/img/icons/dots.svg";
 import trash_icon from "../assets/img/trash.svg";
 import profile_img from "../assets/img/profile.jpg";
-import cake1 from "../assets/img/feed/cake-1.jpg";
-import cake2 from "../assets/img/feed/cake-2.jpg";
-import cake3 from "../assets/img/feed/cake-3.jpg";
-import cups1 from "../assets/img/feed/cups-1.jpg";
-import cups2 from "../assets/img/feed/cups-2.jpg";
-import cups3 from "../assets/img/feed/cups-3.jpg";
 
 import DataContext from "../context/context";
 import { useContext } from "react";
@@ -45,15 +39,17 @@ export default function Post() {
             <div className="images">
               {post.images.length === 3 ? (
                 <>
-                  <img src={post.images[0]} alt="cuk postre" />
-                  <div className="sub-img">
-                    <img src={post.images[1]} alt="cuk postre" />
-                    <img src={post.images[2]} alt="keke postre" />
+                  <div className="sub-img1">
+                    <img src={post.images[0]} alt="image 1.0" />
+                  </div>
+                  <div className="sub-img2">
+                    <img src={post.images[1]} alt="image 2.0" />
+                    <img src={post.images[2]} alt="image 2.1" />
                   </div>
                 </>
               ) : (
                 post.images.map((img) => {
-                  return <img src={img} alt="keke postre" />;
+                  return <img src={img} alt="image 1.0" />;
                 })
               )}
             </div>
