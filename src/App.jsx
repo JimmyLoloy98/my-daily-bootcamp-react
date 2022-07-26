@@ -12,19 +12,43 @@ import InputNewPost from "./components/InputNewPost";
 import Post from "./components/Post";
 import Footer from "./components/Footer";
 import ModalNewPost from "./components/ModalNewPost";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import DataContext from "./context/context";
 
 function App() {
   const [stateModal, setStateModal] = useState(false);
+  const [user, setUser] = useState({});
+  const [myTeam, setMyTeam] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  let user = fetch(
-    "https://my-daily-bootcamp.herokuapp.com/users/37.json"
-  ).then((response) => {
-    console.log(response);
-  });
+  useEffect(() => {
+    fetch("https://my-daily-bootcamp.herokuapp.com/users/61.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        setUser({ ...response });
+      });
+
+    fetch("https://my-daily-bootcamp.herokuapp.com/users.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        setMyTeam([...response]);
+      });
+
+    fetch("https://my-daily-bootcamp.herokuapp.com/posts.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        setPosts([...response]);
+      });
+  }, []);
 
   return (
-    <>
+    <DataContext.Provider value={{ user: user, myTeam: myTeam, posts: posts }}>
       <Navbar />
 
       <Main>
@@ -46,7 +70,7 @@ function App() {
           <Footer />
         </SidebarRigth>
       </Main>
-    </>
+    </DataContext.Provider>
   );
 }
 

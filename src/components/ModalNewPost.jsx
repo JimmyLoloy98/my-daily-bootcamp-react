@@ -21,6 +21,7 @@ export default function ModalNewPost({ open, setOpen }) {
               id="post-area"
               placeholder="Today I learned..."
               maxLength="140"
+              autoFocus
             ></textarea>
             <div className="geolocation">
               <span className="geolocation_position"></span>
