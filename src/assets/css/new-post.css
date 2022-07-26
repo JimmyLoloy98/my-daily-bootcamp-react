@@ -26,7 +26,6 @@
 
 .learning-content:focus-within {
   background: #ffffff;
-  /* Facebook blue */
   border: 1.5px solid #1877f2;
   border-radius: 8px;
 }
@@ -36,14 +35,15 @@
 
 .learning-content:hover {
   background: #ffffff;
-  transition: 0.5s all;
-  border: 1.5px solid #1877f2;
+  transition: 0.2s all;
+    border: 2px solid #1877f2;
   border-radius: 8px;
 }
 
 .learning-content:hover .arrow {
   stroke: #1877f2;
-  transition: 0.5s all;
+  stroke-width: 2px;
+    transition: 0.2s all;
 }
 
 .learning-content {

@@ -13,44 +13,33 @@ import { useContext } from "react";
 
 export default function Post() {
   let dataContext = useContext(DataContext);
+  
   return (
     <>
       {dataContext.posts.map((post, index) => {
         return (
           <div className="public" key={index}>
             <div className="pop-container">
-              <button className="public-button">
+              <button className="dropdown-button">
                 <img src={dots_icon} alt="Menú de Opciones" />
               </button>
-              <div className="POP">
-                <button className="popUp">
+              <div className="popup-container">
+                <button className="pop-up">
                   <img src={trash_icon} />
                   <p>Delete</p>
                 </button>
               </div>
             </div>
-            <div className="public-date">
-              <div className="date-conte">
-                <a className="link-public" href="#">
-                  <img
-                    className="date-img"
-                    src={profile_img}
-                    alt="Paul Portillo"
-                  />
-                </a>
-                <div className="date-text">
-                  <a
-                    className="link-public"
-                    href="https://twitter.com/yummta?lang=es"
-                    target="_blank"
-                  >
-                    <h3>Paul Portillo</h3>
-                  </a>
-                  <p>04 de Julio, 2022</p>
-                </div>
+            <a className="public-date">
+              <figure className="profile-img-post">
+                <img src={profile_img} alt="Foto del usuario" />
+              </figure>
+              <div className="date-text">
+                <h3>Jimmy Loloy</h3>
+                <p>04 de Julio, 2022</p>
               </div>
-            </div>
-            <div className="text">
+            </a>
+            <div className="post-description">
               <p>{post.description}</p>
             </div>
             <div className="images">
