@@ -5,8 +5,109 @@ export default function ModalNewPost({ open, setOpen }) {
   let dataContext = useContext(DataContext);
   const [images, setImages] = useState([]);
   const [post, setPost] = useState("");
-  const [failed, setfailed] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [ubication, setUbication] = useState({});
   const [urlImages, setUrlImages] = useState([]);
+
+  function reset() {
+    setImages([]);
+    setPost("");
+    setUbication({});
+    // setUrlImages([]);
+  }
+
+  function handleSubmitPost() {
+    if (post != 0) {
+      if (images.length != 0) {
+        let promises = images.map((image) => {
+          const data = new FormData();
+          data.append("file", image);
+          data.append("upload_preset", "sickfits");
+          return fetch(
+            "https://api.cloudinary.com/v1_1/wesbostutorial/image/upload",
+            {
+              method: "POST",
+              body: data,
+            }
+          );
+        });
+
+        Promise.all([...promises])
+          .then((results) => {
+            return Promise.all(results.map((r) => r.json()));
+          })
+          .then((results) => {
+            let urlsResult = results.map((result) => {
+              return result.secure_url;
+            });
+
+            fetch("https://my-daily-bootcamp.herokuapp.com/posts", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                description: post,
+                images: urlsResult,
+                user_id: 1,
+              }),
+            }).then((result) => {
+              console.log("tengo respuestas");
+              reset();
+              setOpen(false);
+            });
+          });
+      } else {
+        fetch("https://my-daily-bootcamp.herokuapp.com/posts", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            description: post,
+            user_id: 1,
+          }),
+        }).then((result) => {
+          reset();
+          setOpen(false);
+        });
+      }
+    } else {
+      setFailed(true);
+    }
+  }
+
+  async function savePosition(position) {
+    let { latitude, longitude } = position.coords;
+    let response = await fetch(
+      "https://eu1.locationiq.com/v1/reverse?key=pk.d7081966f4a73ff67138855cfeb0e4ec&lat=" +
+        latitude +
+        "&lon=" +
+        longitude +
+        "&format=json"
+    );
+    let responseJson = await response.json();
+    setUbication({ ...responseJson.address });
+  }
+
+  function calculateLocation() {
+    if (navigator.geolocation) {
+      let options = {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 1000,
+      };
+      navigator.geolocation.getCurrentPosition(
+        savePosition,
+        (error) => {
+          console.log("La opción de ubicación, requiere acceso!");
+        },
+        options
+      );
+    }
+  }
 
   let filterImages = (index) => {
     let filteredImages = images.filter((image, i) => {
@@ -21,7 +122,7 @@ export default function ModalNewPost({ open, setOpen }) {
     <div className={open == false ? "modal close" : "modal"}>
       <div className="wrapper-modal">
         <div>
-          <div className="modal_window">
+          <form className="modal_window">
             <a
               className="modal_close"
               onClick={() => {
@@ -37,13 +138,18 @@ export default function ModalNewPost({ open, setOpen }) {
               placeholder="Today I learned..."
               maxLength="140"
               autoFocus
+              required
               onInput={(e) => {
                 setPost(e.target.value);
               }}
             ></textarea>
-            <div className="geolocation">
-              <span className="geolocation_position"></span>
-            </div>
+            {ubication.town ? (
+              <div className="geolocation">
+                <span className="geolocation_position">
+                  {ubication.town} - {ubication.country}
+                </span>
+              </div>
+            ) : null}
             {failed ? (
               <span className="msg-error-blank">
                 Really? Did not you learning anything? This field is required!
@@ -80,7 +186,12 @@ export default function ModalNewPost({ open, setOpen }) {
                     </svg>
                   </label>
                 </span>
-                <span className="icon-item-bottom icon-geoposition">
+                <button
+                  className="icon-item-bottom icon-geoposition"
+                  onClick={() => {
+                    calculateLocation();
+                  }}
+                >
                   <svg
                     width="18"
                     height="19"
@@ -103,53 +214,19 @@ export default function ModalNewPost({ open, setOpen }) {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </span>
+                </button>
               </div>
               <button
                 className="button-bottom publishButton"
-                onClick={() => {
-                  let promises = images.map((image) => {
-                    const data = new FormData();
-                    data.append("file", image);
-                    data.append("upload_preset", "sickfits");
-                    return fetch(
-                      "https://api.cloudinary.com/v1_1/wesbostutorial/image/upload",
-                      {
-                        method: "POST",
-                        body: data,
-                      }
-                    );
-                  });
-                  Promise.all([...promises])
-                    .then((results) => {
-                      return Promise.all(results.map((r) => r.json()));
-                    })
-                    .then((results) => {
-                      let urlsResult = results.map((result) => {
-                        return result.secure_url;
-                      });
-
-                      fetch("https://my-daily-bootcamp.herokuapp.com/posts", {
-                        method: "POST",
-                        headers: {
-                          Accept: "application/json",
-                          "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                          description: post,
-                          images: urlsResult,
-                          user_id: 1,
-                        }),
-                      }).then((result) => {
-                        console.log("se realizo el post");
-                      });
-                    });
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSubmitPost();
                 }}
               >
                 Publish
               </button>
             </div>
-          </div>
+          </form>
           <div className="container-thumbnails container-images">
             {images.map((image, index) => {
               return (
