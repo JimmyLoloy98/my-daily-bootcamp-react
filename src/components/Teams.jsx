@@ -13,7 +13,7 @@ const Team = () => {
       <h2>My team</h2>
       <div className="container-team">
         {dataContext.myTeam.map((teammate, index) => {
-          if (index >= 55 && index <= 60) {
+          if (index > 1 && index < 5) {
             return (
               <div className="date-teams1" key={index}>
                 <a className="link-team" href={teammate.twitter_url}>
