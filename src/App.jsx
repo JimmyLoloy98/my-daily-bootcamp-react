@@ -22,7 +22,7 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("https://my-daily-bootcamp.herokuapp.com/users/61.json")
+    fetch("https://my-daily-bootcamp.herokuapp.com/users/1.json")
       .then((response) => {
         return response.json();
       })

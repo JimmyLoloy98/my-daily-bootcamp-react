@@ -3,7 +3,10 @@
   margin-top: 16px;
   gap: 16px;
 }
-
+.modal .container-thumbnails > img{
+  width: 100px;
+  height: 80px;
+}
 .modal .container-img{
   width: 80px;
   height: 80px;
