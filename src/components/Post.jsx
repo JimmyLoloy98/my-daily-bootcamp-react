@@ -52,8 +52,8 @@ export default function Post() {
                   </div>
                 </>
               ) : (
-                post.images.map((img) => {
-                  return <img src={img} alt="keke postre" />;
+                post.images.map((img, j) => {
+                  return <img src={img} alt="keke postre" key={j} />;
                 })
               )}
             </div>

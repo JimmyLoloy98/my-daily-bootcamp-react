@@ -6,6 +6,7 @@ export default function ModalNewPost({ open, setOpen }) {
   const [images, setImages] = useState([]);
   const [post, setPost] = useState("");
   const [failed, setfailed] = useState(false);
+  const [urlImages, setUrlImages] = useState([]);
 
   let filterImages = (index) => {
     let filteredImages = images.filter((image, i) => {
@@ -110,24 +111,42 @@ export default function ModalNewPost({ open, setOpen }) {
               <button
                 className="button-bottom publishButton"
                 onClick={() => {
-                  images.map((image) => {
+                  let promises = images.map((image) => {
                     const data = new FormData();
                     data.append("file", image);
                     data.append("upload_preset", "sickfits");
-                    fetch(
+                    return fetch(
                       "https://api.cloudinary.com/v1_1/wesbostutorial/image/upload",
                       {
                         method: "POST",
                         body: data,
                       }
-                    )
-                      .then((response) => {
-                        return response.json();
-                      })
-                      .then((response) => {
-                        console.log("la respuesta de cloudinary", response);
-                      });
+                    );
                   });
+                  Promise.all([...promises])
+                    .then((results) => {
+                      return Promise.all(results.map((r) => r.json()));
+                    })
+                    .then((results) => {
+                      let urlsResult = results.map((result) => {
+                        return result.secure_url;
+                      });
+
+                      fetch("https://my-daily-bootcamp.herokuapp.com/posts", {
+                        method: "POST",
+                        headers: {
+                          Accept: "application/json",
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          description: post,
+                          images: urlsResult,
+                          user_id: 1,
+                        }),
+                      }).then((result) => {
+                        console.log("se realizo el post");
+                      });
+                    });
                 }}
               >
                 Publish
