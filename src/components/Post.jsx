@@ -13,6 +13,10 @@ export default function Post() {
     options ? setOptions(false) : setOptions(true);
   };
 
+  function datePost() {
+    return new Date().toLocaleString();
+  }
+
   return (
     <>
       {dataContext.posts.map((post, index) => {
@@ -35,11 +39,11 @@ export default function Post() {
             </div>
             <a className="public-date">
               <figure className="profile-img-post">
-                <img src={profile_img} alt="Foto del usuario" />
+                <img src={post.author.profile_url} alt="Foto del usuario" />
               </figure>
               <div className="date-text">
-                <h3>Jimmy Loloy</h3>
-                <p>04 de Julio, 2022</p>
+                <h3>{post.author.full_name}</h3>
+                <p>{datePost()}</p>
               </div>
             </a>
             <div className="post-description">
