@@ -3,7 +3,18 @@ import DataContext from "../context/context";
 
 export default function ModalNewPost({ open, setOpen }) {
   let dataContext = useContext(DataContext);
-  const [thumbailImages, setThumbailImages] = useState([]);
+  const [images, setImages] = useState([]);
+  const [post, setPost] = useState("");
+  const [failed, setfailed] = useState(false);
+
+  let filterImages = (index) => {
+    let filteredImages = images.filter((image, i) => {
+      if (i !== index) {
+        return image;
+      }
+    });
+    return filteredImages;
+  };
 
   return (
     <div
@@ -28,13 +39,18 @@ export default function ModalNewPost({ open, setOpen }) {
               placeholder="Today I learned..."
               maxLength="140"
               autoFocus
+              onInput={(e) => {
+                setPost(e.target.value);
+              }}
             ></textarea>
             <div className="geolocation">
               <span className="geolocation_position"></span>
             </div>
-            <span className="msg-error-blank">
-              Really? Did not you learning anything? This field is required!
-            </span>
+            {failed ? (
+              <span className="msg-error-blank">
+                Really? Did not you learning anything? This field is required!
+              </span>
+            ) : null}
             <div className="buttons-post">
               <div className="icons-bottom">
                 <span className="container-input">
@@ -44,12 +60,7 @@ export default function ModalNewPost({ open, setOpen }) {
                     id="file-image"
                     multiple
                     onChange={(e) => {
-                      let arrayFiles = Array.from(e.target.files);
-
-                      let arrayFilesUrl = arrayFiles.map((file) => {
-                        return URL.createObjectURL(file);
-                      });
-                      setThumbailImages([...arrayFilesUrl]);
+                      setImages([...e.target.files]);
                     }}
                   />
                   <label htmlFor="file-image">
@@ -96,17 +107,46 @@ export default function ModalNewPost({ open, setOpen }) {
                   </svg>
                 </span>
               </div>
-              <button className="button-bottom publishButton">Publish</button>
+              <button
+                className="button-bottom publishButton"
+                onClick={() => {
+                  images.map((image) => {
+                    const data = new FormData();
+                    data.append("file", image);
+                    data.append("upload_preset", "sickfits");
+                    fetch(
+                      "https://api.cloudinary.com/v1_1/wesbostutorial/image/upload",
+                      {
+                        method: "POST",
+                        body: data,
+                      }
+                    )
+                      .then((response) => {
+                        return response.json();
+                      })
+                      .then((response) => {
+                        console.log("la respuesta de cloudinary", response);
+                      });
+                  });
+                }}
+              >
+                Publish
+              </button>
             </div>
           </div>
           <div className="container-thumbnails container-images">
-            {/*<img src="../assets/img/instructors/condef5.jpeg" alt="" />*/}
-            {/*<button className="delete-button">Delete</button>*/}
-            {thumbailImages.map((timg) => {
+            {images.map((image, index) => {
               return (
-                <div className="image-cell container-img">
-                  <img src={timg} alt="" />
-                  <button className="delete-button">Delete</button>
+                <div className="image-cell container-img" key={index}>
+                  <img src={URL.createObjectURL(image)} alt="" />
+                  <button
+                    className="delete-button"
+                    onClick={(e) => {
+                      setImages([...filterImages(index)]);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               );
             })}
