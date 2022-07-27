@@ -12,17 +12,19 @@ import InputNewPost from "./components/InputNewPost";
 import Post from "./components/Post";
 import Footer from "./components/Footer";
 import ModalNewPost from "./components/ModalNewPost";
+import ModalDelete from "./components/ModalDelete";
 import { useEffect, useState } from "react";
 import DataContext from "./context/context";
 
 function App() {
   const [stateModal, setStateModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [user, setUser] = useState({});
   const [myTeam, setMyTeam] = useState([]);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("https://my-daily-bootcamp.herokuapp.com/users/61.json")
+    fetch("https://my-daily-bootcamp.herokuapp.com/users/1.json")
       .then((response) => {
         return response.json();
       })
@@ -50,6 +52,7 @@ function App() {
   return (
     <DataContext.Provider value={{ user: user, myTeam: myTeam, posts: posts }}>
       <Navbar />
+      <ModalDelete openDelete={deleteModal} setOpenDelete={setDeleteModal} />
 
       <Main>
         <SidebarLeft>

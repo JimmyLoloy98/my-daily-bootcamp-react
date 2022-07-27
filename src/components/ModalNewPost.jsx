@@ -1,9 +1,6 @@
 export default function ModalNewPost({ open, setOpen }) {
   return (
-    <div
-      id="modal_new_post"
-      className={open == false ? "modal close" : "modal"}
-    >
+    <div className={open == false ? "modal close" : "modal"}>
       <div className="wrapper-modal">
         <div>
           <div className="modal_window">
