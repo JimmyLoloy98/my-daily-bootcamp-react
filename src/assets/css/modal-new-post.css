@@ -87,13 +87,14 @@
 
 .modal_window .buttons-post .icons-bottom {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .modal_window .buttons-post .icons-bottom .icon-item-bottom {
   padding: 10px;
-  height: 16px;
-  width: 16px;
+  height: 38px;
+  width: 40px;
+  cursor: pointer;
 }
 
 .modal_window .buttons-post .button-bottom {
@@ -116,7 +117,7 @@
 }
 
 .geolocation {
-  display: none;
+  display: flex;
   background: #F1F2F6;
   border-radius: 0px 0px 8px 8px;
   height: 44px;
@@ -125,9 +126,12 @@
 }
 
 .geolocation_position {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
-  padding: 16px;
+  padding: 14px;
   color: #203758;
 }
