@@ -1,4 +1,22 @@
+import { useContext, useState } from "react";
+import DataContext from "../context/context";
+
 export default function ModalNewPost({ open, setOpen }) {
+  let dataContext = useContext(DataContext);
+  const [images, setImages] = useState([]);
+  const [post, setPost] = useState("");
+  const [failed, setfailed] = useState(false);
+  const [urlImages, setUrlImages] = useState([]);
+
+  let filterImages = (index) => {
+    let filteredImages = images.filter((image, i) => {
+      if (i !== index) {
+        return image;
+      }
+    });
+    return filteredImages;
+  };
+
   return (
     <div className={open == false ? "modal close" : "modal"}>
       <div className="wrapper-modal">
@@ -12,20 +30,25 @@ export default function ModalNewPost({ open, setOpen }) {
             >
               &times;
             </a>
-            <h3>What did you learn today Paul?</h3>
+            <h3>{`What did you learn today ${dataContext.user.full_name}?`}</h3>
             <textarea
               name="post-area"
               id="post-area"
               placeholder="Today I learned..."
               maxLength="140"
               autoFocus
+              onInput={(e) => {
+                setPost(e.target.value);
+              }}
             ></textarea>
             <div className="geolocation">
               <span className="geolocation_position"></span>
             </div>
-            <span className="msg-error-blank">
-              Really? Did not you learning anything? This field is required!
-            </span>
+            {failed ? (
+              <span className="msg-error-blank">
+                Really? Did not you learning anything? This field is required!
+              </span>
+            ) : null}
             <div className="buttons-post">
               <div className="icons-bottom">
                 <span className="container-input">
@@ -34,6 +57,9 @@ export default function ModalNewPost({ open, setOpen }) {
                     type="file"
                     id="file-image"
                     multiple
+                    onChange={(e) => {
+                      setImages([...e.target.files]);
+                    }}
                   />
                   <label htmlFor="file-image">
                     <svg
@@ -79,12 +105,67 @@ export default function ModalNewPost({ open, setOpen }) {
                   </svg>
                 </span>
               </div>
-              <button className="button-bottom publishButton">Publish</button>
+              <button
+                className="button-bottom publishButton"
+                onClick={() => {
+                  let promises = images.map((image) => {
+                    const data = new FormData();
+                    data.append("file", image);
+                    data.append("upload_preset", "sickfits");
+                    return fetch(
+                      "https://api.cloudinary.com/v1_1/wesbostutorial/image/upload",
+                      {
+                        method: "POST",
+                        body: data,
+                      }
+                    );
+                  });
+                  Promise.all([...promises])
+                    .then((results) => {
+                      return Promise.all(results.map((r) => r.json()));
+                    })
+                    .then((results) => {
+                      let urlsResult = results.map((result) => {
+                        return result.secure_url;
+                      });
+
+                      fetch("https://my-daily-bootcamp.herokuapp.com/posts", {
+                        method: "POST",
+                        headers: {
+                          Accept: "application/json",
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          description: post,
+                          images: urlsResult,
+                          user_id: 1,
+                        }),
+                      }).then((result) => {
+                        console.log("se realizo el post");
+                      });
+                    });
+                }}
+              >
+                Publish
+              </button>
             </div>
           </div>
           <div className="container-thumbnails container-images">
-            <img src="../assets/img/instructors/condef5.jpeg" alt="" />
-            <button className="delete-button">Delete</button>
+            {images.map((image, index) => {
+              return (
+                <div className="image-cell container-img" key={index}>
+                  <img src={URL.createObjectURL(image)} alt="" />
+                  <button
+                    className="delete-button"
+                    onClick={(e) => {
+                      setImages([...filterImages(index)]);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

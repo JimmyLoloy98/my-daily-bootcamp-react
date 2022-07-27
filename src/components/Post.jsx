@@ -8,7 +8,7 @@ import { useContext, useState } from "react";
 export default function Post() {
   let dataContext = useContext(DataContext);
   const [options, setOptions] = useState(false);
-  
+
   let buttonActionPost = () => {
     options ? setOptions(false) : setOptions(true);
   };
@@ -18,14 +18,14 @@ export default function Post() {
       {dataContext.posts.map((post, index) => {
         return (
           <div className="public" key={index}>
-            <div
-              className="pop-container"
-            >
+            <div className="pop-container">
               <button className="dropdown-button" onClick={buttonActionPost}>
                 <img src={dots_icon} alt="Menú de Opciones" />
               </button>
               <div
-                className={options ? "popup-container" : "popup-container hidden"}
+                className={
+                  options ? "popup-container" : "popup-container hidden"
+                }
               >
                 <button className="pop-up">
                   <img src={trash_icon} />
@@ -57,8 +57,8 @@ export default function Post() {
                   </div>
                 </>
               ) : (
-                post.images.map((img) => {
-                  return <img src={img} alt="image 1.0" />;
+                post.images.map((img, j) => {
+                  return <img src={img} alt="image 1.0" key={j} />;
                 })
               )}
             </div>
